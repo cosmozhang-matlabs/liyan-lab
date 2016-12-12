@@ -26,7 +26,7 @@ set(h_health, 'FaceColor', color_health);
 set(h_unhealth, 'FaceColor', color_unhealth);
 set(h_health, 'EdgeColor', 'none');
 set(h_unhealth, 'EdgeColor', 'none');
-ylabel(ax_health, 'Individuals');
+ylabel(ax_health, 'Number of individuals');
 ylim(ax_health, ylimval);
 ylim(ax_unhealth, ylimval);
 xlim(ax_health, xlimval);
@@ -38,7 +38,7 @@ set(ax_unhealth, 'FontSize', font_size);
 set(ax_health, 'LineWidth', 2);
 set(ax_unhealth, 'LineWidth', 2);
 % title(ax_health, 'Hengshan');
-text('String', 'a)', 'Units', 'normalized', 'FontSize', font_size, 'Position', text_pos);
+text('String', '(a)', 'Units', 'normalized', 'FontSize', font_size, 'Position', text_pos);
 % legend(ax_health,   {'Healthy  '}, 'Position', [0.763 0.85 0.11 0.02], 'Box', 'on');
 % legend(ax_unhealth, {'Unhealthy'}, 'Position', [0.77 0.82 0.1 0.02], 'Box', 'on');
 % legend([h_health,h_unhealth],{'Healthy','Unhealthy'}, 'Parent', gcf);
@@ -60,7 +60,7 @@ set(h_health, 'FaceColor', color_health);
 set(h_unhealth, 'FaceColor', color_unhealth);
 set(h_health, 'EdgeColor', 'none');
 set(h_unhealth, 'EdgeColor', 'none');
-ylabel(ax_health, 'Individuals');
+ylabel(ax_health, 'Number of Individuals');
 ylim(ax_health, ylimval);
 ylim(ax_unhealth, ylimval);
 xlim(ax_health, xlimval);
@@ -71,9 +71,9 @@ set(ax_unhealth, 'FontSize', font_size);
 set(ax_health, 'LineWidth', 2);
 set(ax_unhealth, 'LineWidth', 2);
 % title(ax_health, 'Wutaishan');
-text('String', 'b)', 'Units', 'normalized', 'FontSize', font_size, 'Position', text_pos);
+text('String', '(b)', 'Units', 'normalized', 'FontSize', font_size, 'Position', text_pos);
 
-mprintfig('savename','dualbar','sizemode','single','dims',layout,'size',[15,7],'printscale',1);
+% mprintfig('savename','dualbar','sizemode','single','dims',layout,'size',[15,7],'printscale',1);
 
 
 
