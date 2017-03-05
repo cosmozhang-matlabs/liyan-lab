@@ -1,0 +1,1 @@
+Note that in `vs1` and `rescue_vs1`, all the modes "8" are actually mode "other", all the modes "other" are actually mode "8".

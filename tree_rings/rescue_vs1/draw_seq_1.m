@@ -26,7 +26,7 @@ for i = 1:size(data,1)
     plot(year_span, 1+zeros(size(year_span)), 'LineWidth', 0.1, 'Color', [0 0 0]+0.5, 'LineStyle', '--');
     title(sprintf('%s(%d-%d) # %d', name, year_rng(1), year_rng(end), datarng(1)+i-1));
     set(gca, 'YLim', [0, max(0.1, max(data_to_plot)*1.05)] );
-    set(gca, 'YTick', [0, 1, 2, 3, 4, 5]);
+    %set(gca, 'YTick', [0, 1, 2, 3, 4, 5]);
     set(gca, 'LineWidth', 1);
     set(gca, 'FontSize', 1);
     set(gca, 'FontUnit', 'points');
