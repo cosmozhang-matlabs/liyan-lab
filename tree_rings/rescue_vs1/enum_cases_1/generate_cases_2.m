@@ -45,16 +45,16 @@ for i = 1:size(test_cases,1)
             test_cases{i}{j}.uncertain = [1 6];
             cnt = cnt + 1;
         elseif strcmpi(test_cases{i}{j}.name, 'wts 1825-1855 20')
-            test_cases{i}{j}.certain = [2 4 16];
-            test_cases{i}{j}.uncertain = [1];
+            test_cases{i}{j}.certain = [2 4];
+            test_cases{i}{j}.uncertain = [15 9 16 17 20 22];
             cnt = cnt + 1;
         elseif strcmpi(test_cases{i}{j}.name, 'wts 1825-1855 8')
-            test_cases{i}{j}.certain = [6 10 12 13 19 25 26 29 30 34 35];
-            test_cases{i}{j}.uncertain = [22 32];
+            test_cases{i}{j}.certain = [1 5 18 21 27 28 34 36];
+            test_cases{i}{j}.uncertain = [9 10 16 17 20 23 29 15 6];
             cnt = cnt + 1;
         elseif strcmpi(test_cases{i}{j}.name, 'wts 1825-1855 others')
-            test_cases{i}{j}.certain = [3 5 7 9 15 17 18 20 21 23 27 28 36];
-            test_cases{i}{j}.uncertain = [4 16 22 32 1];
+            test_cases{i}{j}.certain = [3 7 12 13 19 22 25 26 30 31 32 35];
+            test_cases{i}{j}.uncertain = [6 10 29];
             cnt = cnt + 1;
         elseif strcmpi(test_cases{i}{j}.name, 'wts 1900-1940 20')
             test_cases{i}{j}.certain = [7 9 18 22 23 27 13 28 8];

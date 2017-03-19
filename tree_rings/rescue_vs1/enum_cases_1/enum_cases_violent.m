@@ -6,7 +6,7 @@ load('../wts_36_rawdata.mat');
 load('../hs_20_rawdata.mat');
 
 cnt_thre = 1;
-det_thre = 0.0001;
+det_thre = 0.001;
 
 for iii = fliplr(1:size(test_cases,1))
     for jjj = 1:size(test_cases{iii},1)
