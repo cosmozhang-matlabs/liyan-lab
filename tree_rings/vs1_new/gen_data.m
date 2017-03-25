@@ -4,6 +4,12 @@ function [  ] = gen_data(  )
 casCount = size(xlsxText,1);
 wts_hs_modes = cell(casCount,1);
 
+% dims: period, mode, site
+% period: 1, 2, 3
+% mode: 20, -1, 8
+% site: 1, 2
+wts_hs_modes_in_dims = cell(3, 3, 2);
+
 hs_20_rawdata = load('hs_20_rawdata.mat');
 hs_20_years = hs_20_rawdata.hs_20_years;
 hs_20_rawdata = hs_20_rawdata.hs_20_rawdata;
@@ -24,14 +30,22 @@ for ci = 1:casCount
     cYearBegin = str2num(cYearSplit{1});
     cYearEnd = str2num(cYearSplit{2});
     
+    if isempty(cIndexes)
+        continue;
+    end
+    
     if strcmpi(cTypeStr, '20')
         cTypeNum = 20;
+        cTypeNumx = 1;
     elseif strcmpi(cTypeStr, '8')
         cTypeNum = 8;
+        cTypeNumx = 3;
     elseif strcmpi(cTypeStr, 'others')
         cTypeNum = -1;
+        cTypeNumx = 2;
     elseif strcmpi(cTypeStr, 'other')
         cTypeNum = -1;
+        cTypeNumx = 2;
     else
         continue;
     end
@@ -75,9 +89,10 @@ for ci = 1:casCount
     cStruct.data = cData;
     
     wts_hs_modes{ci} = cStruct;
+    wts_hs_modes_in_dims{cYearNum, cTypeNumx, cSiteNum} = cStruct;
 end
 
-save('wts_hs_modes.mat', 'wts_hs_modes');
+save('wts_hs_modes.mat', 'wts_hs_modes', 'wts_hs_modes_in_dims');
 
 end
 

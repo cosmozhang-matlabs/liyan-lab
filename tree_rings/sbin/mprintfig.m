@@ -1,6 +1,6 @@
 function [  ] = mprintfig(varargin)
 
-SavePath = '~/Downloads/';
+SavePath = './';
 SaveName = 'fig';
 SizeMode = 'total'; % total | single
 UnitName = 'inches'; % Unit properties
@@ -24,6 +24,8 @@ for i = 1:2:nargin
         SavePath = varargin{i+1};
     elseif strcmpi(varargin{i}, 'SaveName')
         SaveName = varargin{i+1};
+    elseif strcmpi(varargin{i}, 'Resolution')
+        resolution_rate = sprintf('-r%d', varargin{i+1});
     end
 end
 

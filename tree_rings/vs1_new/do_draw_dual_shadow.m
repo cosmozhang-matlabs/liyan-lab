@@ -1,5 +1,9 @@
 function do_draw_dual_shadow
 
+close all;
+
+addpath('../sbin');
+
 gen_data();
 
 figure;
@@ -26,6 +30,9 @@ axs = cell(dims(1)*dims(2), 1);
 
 for i = 1:size(wts_hs_modes,1)
     dsl_item = wts_hs_modes{i};
+    if isempty(dsl_item)
+        continue;
+    end
     subx = dsl_item.yearn-1;
     suby = dsl_item.siten-1;
     subp = dims(2)*suby+subx+1;
@@ -46,12 +53,12 @@ for i = 1:size(wts_hs_modes,1)
         dsl_years = dsl_years';
     end
 
-%     if dsl_item.typen == -1
-%         color = [1 1 1] * 0.5;
-%         h = draw_dual_shadow(axs{subp}, dsl_data, dsl_years, 1, color, color, 1);
-%         set(h, 'LineWidth', 1);
-%         hold on;
-%     end
+    if dsl_item.typen == -1
+        color = [1 1 1] * 0.5;
+        h = draw_dual_shadow(axs{subp}, dsl_data, dsl_years, 1, color, color, 1);
+        set(h, 'LineWidth', 1);
+        hold on;
+    end
     if dsl_item.typen == 8
         color = [1 1 1] * 0.7;
         h = draw_dual_shadow(axs{subp}, dsl_data, dsl_years, 1, color, color, 0.6);
@@ -95,6 +102,7 @@ for i = 1:size(wts_hs_modes,1)
     set(gca, 'LineWidth', 1.5);
 end
 
-mprintfig('savename','dualshadow','sizemode','single','dims',dims,'size',[5,4.76],'printscale',1);
+mprintfig('savename','dualshadow','sizemode','single','dims',dims,'size',[5,4.76],'printscale',1,'Resolution',72);
+% close(gcf);
 
 end

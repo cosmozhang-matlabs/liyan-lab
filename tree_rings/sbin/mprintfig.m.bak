@@ -1,6 +1,6 @@
 function [  ] = mprintfig(varargin)
 
-SavePath = './';
+SavePath = '~/Downloads/';
 SaveName = 'fig';
 SizeMode = 'total'; % total | single
 UnitName = 'inches'; % Unit properties
