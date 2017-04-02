@@ -10,10 +10,10 @@ wts_hs_modes = cell(casCount,1);
 % site: 1, 2
 wts_hs_modes_in_dims = cell(3, 3, 2);
 
-hs_20_rawdata = load('hs_20_rawdata.mat');
+hs_20_rawdata = load('hs_20_rawdata.(6extreme-modfied).mat');
 hs_20_years = hs_20_rawdata.hs_20_years;
 hs_20_rawdata = hs_20_rawdata.hs_20_rawdata;
-wts_36_rawdata = load('wts_36_rawdata.mat');
+wts_36_rawdata = load('wts_36_rawdata.(6extreme-modfied).mat');
 wts_36_years = wts_36_rawdata.wts_36_years;
 wts_36_rawdata = wts_36_rawdata.wts_36_rawdata;
 

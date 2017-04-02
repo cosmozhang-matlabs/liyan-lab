@@ -10,7 +10,7 @@ result_table{4,1} = 'Wutaishan';
 result_table{5,1} = 'Chi2';
 result_table{6,1} = 'p-value';
 
-mode_names = {'20','8-20','8'};
+mode_names = {'20','8 - 20','8'};
 
 contingency_table = zeros(2,9);
 for i = 1:3
@@ -29,8 +29,9 @@ for i = 1:3
                 continue;
             end
             meanval = nanmean(dsl_item.data);
-            result_table{2+k,(i-1)*3+j+1} = sprintf('%d',meanval);
-            contingency_table(k,(i-1)*3+j) = max(size(dsl_item.indexes));
+            datalen = max(size(dsl_item.indexes));
+            result_table{2+k,(i-1)*3+j+1} = sprintf('%d',datalen);
+            contingency_table(k,(i-1)*3+j) = datalen;
         end
     end
     % chi2 contingency testing
@@ -48,6 +49,8 @@ end
 
 % xlswrite('compare.xlsx',result_table);
 writecsv('compare.csv', result_table);
+
+fprintf('%s  %s  %s\n', result_table{6,2}, result_table{6,5}, result_table{6,8});
 
 end
 
