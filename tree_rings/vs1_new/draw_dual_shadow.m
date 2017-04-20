@@ -62,8 +62,12 @@ h = plot(years, data, 'k');
 hold on;
 plot(years, zeros(1, size(data,2)) + base_num, '--k');
 hold on;
-fill([above_years, above_years(end), above_years(1)], [above_data, base_num, base_num], color_above, 'EdgeColor', 'none', 'FaceAlpha', alpha);
-fill([below_years, below_years(end), below_years(1)], [below_data, base_num, base_num], color_below, 'EdgeColor', 'none', 'FaceAlpha', alpha);
+if max(size(above_years)) > 0
+    fill([above_years, above_years(end), above_years(1)], [above_data, base_num, base_num], color_above, 'EdgeColor', 'none', 'FaceAlpha', alpha);
+end
+if max(size(below_years)) > 0
+    fill([below_years, below_years(end), below_years(1)], [below_data, base_num, base_num], color_below, 'EdgeColor', 'none', 'FaceAlpha', alpha);
+end
 xlim([years(1),years(end)]);
 
 end
