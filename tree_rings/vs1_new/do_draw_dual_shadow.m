@@ -2,6 +2,8 @@ function do_draw_dual_shadow
 
 close all;
 
+xtick_interval = 5;
+
 addpath('../sbin');
 
 gen_data();
@@ -19,9 +21,9 @@ figure;
 
 dims = [2 3];
 ascii = int16('a');
-figw = 0.27;
+figw = 0.26;
 figh = 0.4;
-figwp = (1 - dims(2) * figw - 0.01) / dims(2);
+figwp = (1 - dims(2) * figw - 0.04) / dims(2);
 fighp = (1 - dims(1) * figh) / 2;
 
 load('wts_hs_modes.mat');
@@ -93,9 +95,12 @@ for i = 1:size(wts_hs_modes,1)
     end
 
     % last year must be 2010
-    if subx == dims(2) - 1
-        set(gca, 'xtick', 1960:25:2010);
-    end
+    % if subx == dims(2) - 1
+    %     set(gca, 'xtick', 1960:25:2010);
+    % end
+
+    xtick_begin = ceil(dsl_years(1)/xtick_interval) * xtick_interval;
+    set(gca, 'xtick', xtick_begin:xtick_interval:dsl_years(end));
 
     set(gca, 'fontunits','points');
     set(gca, 'FontSize', 20);
