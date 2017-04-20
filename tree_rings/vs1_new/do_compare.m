@@ -20,6 +20,8 @@ for i = 1:3
     end
     result_table{1,(i-1)*3+2} = sprintf('%d-%d', dsl_item.yearBegin, dsl_item.yearEnd);
     has_empty = 0;
+    total_count = zeros(1,2);
+    datalens = zeros(3,2);
     for j = 1:3
         result_table{2,(i-1)*3+j+1} = mode_names{j};
         for k = 1:2
@@ -30,8 +32,16 @@ for i = 1:3
             end
             meanval = nanmean(dsl_item.data);
             datalen = max(size(dsl_item.indexes));
-            result_table{2+k,(i-1)*3+j+1} = sprintf('%d',datalen);
+            total_count(k) = total_count(k) + datalen;
+            datalens(j,k) = datalen;
             contingency_table(k,(i-1)*3+j) = datalen;
+        end
+    end
+    for j = 1:3
+        for k = 1:2
+            if datalens(j,k)
+                result_table{2+k,(i-1)*3+j+1} = sprintf('%d (%.2f)%%', datalens(j,k), datalens(j,k) * 100 / total_count(k));
+            end
         end
     end
     % chi2 contingency testing
