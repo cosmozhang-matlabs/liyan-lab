@@ -17,6 +17,22 @@ wts_36_rawdata = load('wts_36_rawdata.(6extreme-modfied).mat');
 wts_36_years = wts_36_rawdata.wts_36_years;
 wts_36_rawdata = wts_36_rawdata.wts_36_rawdata;
 
+yearBegins = [zeros(1,casCount)];
+yearBegins_idx = 1;
+for ci = 1:casCount
+    cName = xlsxText{ci};
+    cNameSplit = strsplit(cName, ' ');
+    cYearStr = cNameSplit{2};
+    cYearSplit = strsplit(cYearStr, '-');
+    cYearBegin = str2num(cYearSplit{1});
+    if sum(yearBegins == cYearBegin) == 0
+        yearBegins(yearBegins_idx) = cYearBegin;
+        yearBegins_idx = yearBegins_idx + 1;
+    end
+end
+yearBegins = sort(yearBegins(1:(yearBegins_idx-1)));
+% yearBegins = sort(yearBegins(1:3));
+
 for ci = 1:casCount
     cStruct = struct();
     cName = xlsxText{ci};
@@ -62,14 +78,11 @@ for ci = 1:casCount
         continue;
     end
     
-    if (cYearBegin == 1825) && (cYearEnd == 1855)
-        cYearNum = 1;
-    elseif (cYearBegin == 1900) && (cYearEnd == 1940)
-        cYearNum = 2;
-    elseif (cYearBegin == 1960) && (cYearEnd == 2012)
-        cYearNum = 3;
-    else
-        continue;
+    for i = 1:size(yearBegins,2)
+        if cYearBegin == yearBegins(i)
+            cYearNum = i;
+            break;
+        end
     end
     
     cYears = cYearBegin:cYearEnd;
