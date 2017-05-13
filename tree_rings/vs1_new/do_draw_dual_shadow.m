@@ -43,7 +43,7 @@ for i = 1:size(wts_hs_modes,1)
         axs{subp} = gca;
     end
     alpha = 0.75;
-    ylim = [0 2.7];
+    ylim = [0 2.2];
     ytick = ylim(1):0.5:ylim(end);
 
     dsl_data = dsl_item.data;
