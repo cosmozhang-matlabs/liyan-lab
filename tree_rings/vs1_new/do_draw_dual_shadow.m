@@ -19,6 +19,10 @@ figure;
 %     end
 % end
 
+font_size = 20;
+font_size_ticks = 18;
+font_name = 'Times New Roman';
+
 dims = [2 3];
 ascii = int16('a');
 figw = 0.26;
@@ -86,7 +90,7 @@ for i = 1:size(wts_hs_modes,1)
     position = [figwp + subx * (figw + figwp), fighp + (dims(1)-suby-1) * figh, figw, figh];
     set(gca, 'position', position);
     text('String', ['(' (char(ascii + dims(2)*suby + subx)) ')'],...
-        'Units', 'normalized', 'Position', [0.02 0.95], 'FontSize', 24);
+        'Units', 'normalized', 'Position', [0.02 0.95], 'FontSize', font_size, 'FontName', font_name);
     if suby == dims(1) - 1
         xlabel('Year');
     end
@@ -103,11 +107,14 @@ for i = 1:size(wts_hs_modes,1)
     set(gca, 'xtick', xtick_begin:xtick_interval:dsl_years(end));
 
     set(gca, 'fontunits','points');
-    set(gca, 'FontSize', 20);
+    set(gca, 'FontName', font_name);
+    set(gca, 'FontSize', font_size_ticks);
+    set(get(gca, 'YLabel'), 'FontSize', font_size);
+    set(get(gca, 'XLabel'), 'FontSize', font_size);
     set(gca, 'LineWidth', 1.5);
 end
 
-mprintfig('savename','dualshadow','sizemode','single','dims',dims,'size',[5,4.76],'printscale',1,'Resolution',72);
-% close(gcf);
+mprintfig('savename','dualshadow','sizemode','single','dims',dims,'size',[5,4.5],'printscale',1,'Resolution',600);
+close(gcf);
 
 end
